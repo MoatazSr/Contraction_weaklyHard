@@ -1,8 +1,4 @@
 # Contraction-Based Stability of a Dual-Sensor NCS under WHRT Dropout
-
-**Moataz Seghyar** — LASTIMI Laboratory, EST Salé, Mohammed V University in Rabat  
-PhD research companion code · `paper.tex` + `design_rationale.tex`
-
 ---
 
 ## What this is
