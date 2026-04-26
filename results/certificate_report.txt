@@ -1,6 +1,6 @@
 ======================================================================
   WHRT STABILITY CERTIFICATE REPORT  (publication version)
-  Generated: 2026-04-25T21:25:01
+  Generated: 2026-04-26T16:24:54
 ======================================================================
 
 PARAMETERS
@@ -8,12 +8,17 @@ PARAMETERS
   eta                           : (17,20)
   h                             : 0.195
   alpha                         : 3.0
+  alpha_star                    : 2.3
   lambda_certified              : 0.15
   rho_jump_certified            : 1.0
   MCM                           : 0.9711736407047231
   stability_margin              : 0.028826359295276882
   flow_certified                : True
   certified_bound               : -1.430532121695008
+  h_star_sweep                  : 0.4
+  method_ratio                  : 9.93x (same arch)
+  combined_ratio                : 1.56x [JOINT: arch+method]
+  invariance_gap                : True
   certificate_chain             : COMPLETE
 
 CONFIG

@@ -65,7 +65,7 @@ def _poly_basis(z: np.ndarray) -> np.ndarray:
     return np.array([1.0, x**2, e**2, x**4, e**4, x**2 * e**2])
 
 
-def f_flow(z: np.ndarray) -> np.ndarray:
+def f_flow(z: np.ndarray, alpha: float | None = None) -> np.ndarray:
     """Observer-based closed-loop vector field at z = [x, ê].
 
     Physical system
@@ -82,15 +82,21 @@ def f_flow(z: np.ndarray) -> np.ndarray:
 
     The ALPHA term breaks the conservation law d(x+ê)/dt = 0 that would
     hold for ALPHA=0 (standard ZOH), enabling contraction analysis.
+
+    Parameters
+    ----------
+    z     : [x, ê]
+    alpha : observer gain; defaults to config.ALPHA if None
     """
     z = np.asarray(z, dtype=float)
     x, e = z[0], z[1]
+    a = config.ALPHA if alpha is None else float(alpha)
     dxdt = x**2 - x**3 - 2.0 * (x + e)
-    dedt = -dxdt - config.ALPHA * e
+    dedt = -dxdt - a * e
     return np.array([dxdt, dedt])
 
 
-def jacobian_f(z: np.ndarray) -> np.ndarray:
+def jacobian_f(z: np.ndarray, alpha: float | None = None) -> np.ndarray:
     """Analytic 2×2 Jacobian of f_flow at z = [x, ê].
 
     f₁(x,ê) = x² - x³ - 2x - 2ê
@@ -98,12 +104,18 @@ def jacobian_f(z: np.ndarray) -> np.ndarray:
 
     ∂f₁/∂x = 2x - 3x² - 2         ∂f₁/∂ê = -2
     ∂f₂/∂x = -(2x - 3x² - 2)      ∂f₂/∂ê = 2 - ALPHA
+
+    Parameters
+    ----------
+    z     : [x, ê]
+    alpha : observer gain; defaults to config.ALPHA if None
     """
     z = np.asarray(z, dtype=float)
     x = float(z[0])
+    a = config.ALPHA if alpha is None else float(alpha)
     df1dx = 2.0 * x - 3.0 * x**2 - 2.0
-    return np.array([[df1dx,            -2.0          ],
-                     [-df1dx,           2.0 - config.ALPHA]])
+    return np.array([[df1dx,  -2.0   ],
+                     [-df1dx,  2.0 - a]])
 
 
 def build_metric(params: np.ndarray, z: np.ndarray) -> np.ndarray:
