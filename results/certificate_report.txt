@@ -1,0 +1,56 @@
+======================================================================
+  WHRT STABILITY CERTIFICATE REPORT  (publication version)
+  Generated: 2026-04-25T21:25:01
+======================================================================
+
+PARAMETERS
+----------------------------------------------------------------------
+  eta                           : (17,20)
+  h                             : 0.195
+  alpha                         : 3.0
+  lambda_certified              : 0.15
+  rho_jump_certified            : 1.0
+  MCM                           : 0.9711736407047231
+  stability_margin              : 0.028826359295276882
+  flow_certified                : True
+  certified_bound               : -1.430532121695008
+  certificate_chain             : COMPLETE
+
+CONFIG
+----------------------------------------------------------------------
+  M                             : 17
+  N                             : 20
+  H                             : 0.195
+  LAM                           : 0.15
+  RHO                           : 0.9
+  ALPHA                         : 3.0
+  N_GRID_FINE                   : 150
+  N_LIP_GRID                    : 25
+  N_GRID_RJUMP                  : 300
+  SEED                          : 42
+
+PRIMARY CERTIFICATE — Maximum Cycle Mean (Karp 1978)
+----------------------------------------------------------------------
+  MCM                            : 0.97117364
+  MCM < 1?                       : True
+  Stability margin (1-MCM)       : 0.02882636
+  Certificate type               : COMPLETE_NSC
+  Flow condition certified       : True
+  ρ_jump from reset map          : True
+  Full chain certified           : True
+  Worst cycle labels             : [1, 3]
+  Worst cycle geometric mean     : 0.97117364
+
+  Conclusion: COMPLETE STABILITY CERTIFICATE: MCM = 0.971174 < 1.0 (margin = 0.028826). The system is exponentially incrementally stable for ALL WHRT-admissible dropout sequences. Certificate is NECESSARY AND SUFFICIENT.
+
+SECONDARY VALIDATION — Walk Product Check (NOT certificate)
+----------------------------------------------------------------------
+  NOTE: VALIDATION CHECK ONLY — this walk-product check covers 10000 finite walks from a truncated DFS. It cannot certify stability over infinite dropout sequences. The formal certificate is compute_max_cycle_mean() (MCM, exact).
+  Walks checked                  : 10000
+  Max walk product               : 0.97117364
+  Walks exceeding 1.0            : 0
+  Walk validation passed         : True
+
+======================================================================
+END OF REPORT
+======================================================================
